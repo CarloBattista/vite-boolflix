@@ -12,14 +12,14 @@
             </div>
         </div>
         <div class="container_cards">
-            <div class="card">
+            <div class="card" v-for="(element, index) in store.arrayMovies" :key="index">
                 <div class="imageWrap">
-                    <img src="" alt="">
+                    <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" alt="element.title">
                 </div>
                 <div class="infoWrap">
-                    <h2 class="titleContent"></h2>
-                    <h2 class="originalTitleContent"></h2>
-                    <p class="synopsisContent"></p>
+                    <h2 class="titleContent">{{ element.name }}</h2>
+                    <h2 class="originalTitleContent">{{ element.original_title }}</h2>
+                    <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
             </div>
         </div>
