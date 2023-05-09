@@ -4,17 +4,19 @@
             <div class="box_icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <input type="text" class="searchInput" placeholder="Cerca Film o Serie TV">
+            <input v-model="this.store.searchBar" type="text" class="searchInput" placeholder="Cerca Film o Serie TV">
         </div>
     </div>
 </template>
 
 <script>
+import { store } from "../store";
+
 export default {
     name: "SearchComp",
     data() {
         return {
-
+            store
         }
     }
 }
