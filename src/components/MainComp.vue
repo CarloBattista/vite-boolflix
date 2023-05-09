@@ -177,8 +177,12 @@ export default {
     padding: 1em;
     display: none;
     flex-direction: column;
-    overflow: hidden;
+    overflow: auto;
     background: rgba(0, 0, 0, .7);
+}
+
+.infoWrap::-webkit-scrollbar {
+  width: 0;
 }
 
 .card:hover .infoWrap {
