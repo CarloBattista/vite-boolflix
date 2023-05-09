@@ -8,7 +8,7 @@
                 <div class="box_icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <input v-model="this.store.searchBar" class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
+                <input v-model="this.store.searchBar" @keyup="apiMovies()" class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
             </div>
         </div>
         <div class="container_cards">
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { store } from "../store"
 
 export default {
