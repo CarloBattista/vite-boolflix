@@ -8,8 +8,8 @@
                 <div class="box_icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows(), connectAllContent()" class="searchInput" type="text"
-                    placeholder="Cerca Film o Serie TV">
+                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows(), connectAllContent()"
+                    class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
             </div>
         </div>
         <div class="container_cards">
@@ -154,6 +154,7 @@ export default {
     height: auto;
     cursor: pointer;
     overflow: hidden;
+    transition: transform 250ms ease 100ms;
 }
 
 .imagwWrap {
@@ -182,7 +183,11 @@ export default {
 }
 
 .infoWrap::-webkit-scrollbar {
-  width: 0;
+    width: 0;
+}
+
+.card:hover {
+    transform: scale(1.1);
 }
 
 .card:hover .infoWrap {
@@ -226,4 +231,5 @@ export default {
         padding: 0 4%;
         grid-template-columns: repeat(3, 1fr);
     }
-}</style>
+}
+</style>
