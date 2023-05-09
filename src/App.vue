@@ -8,12 +8,6 @@ export default {
     HeaderComp,
     MainComp,
   },
-  data() {
-
-  },
-  methods: {
-    
-  }
 }
 </script>
 
