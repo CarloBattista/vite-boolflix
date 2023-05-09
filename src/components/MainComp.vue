@@ -24,6 +24,15 @@ export default {
             store
         }
     },
+    methods: {
+        apiMovies() {
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.myApiKey}&query=${store.searchBar}`)
+                .then((res) => {
+                    this.store.arrayMovies = res.data.results
+                    console.log(res.data)
+                })
+        },
+    },
 }
 </script>
 
