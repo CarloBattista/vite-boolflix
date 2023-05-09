@@ -22,6 +22,16 @@
                     <h2 class="titleContent">{{ element.name }}</h2>
                     <h3 class="originalTitleContent">{{ element.original_title }}</h3>
                     <h3 class="originalTitleContent">{{ element.original_name }}</h3>
+                    <div class="container_language_container">
+                        <img v-if="element.original_language == 'it'" class="flag_lang" src="/_resources/flags/it_flag.svg"
+                            alt="">
+                        <img v-else-if="element.original_language == 'en'" class="flag_lang"
+                            src="/_resources/flags/en_flag.svg" alt="">
+                        <img v-else-if="element.original_language == 'fr'" class="flag_lang"
+                            src="/_resources/flags/fr_flag.svg" alt="">
+                        <img v-else="element.original_language == 'sp' " class="flag_lang"
+                            src="/_resources/flags/sp_flag.svg" alt="">
+                    </div>
                     <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
             </div>
@@ -214,6 +224,18 @@ export default {
     font-weight: 400;
 }
 
+.container_language_container {
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.flag_lang {
+    width: 23px;
+    height: auto;
+}
+
 @media only screen and (max-width: 700px) {
     .header {
         padding: 0 4%;
@@ -231,5 +253,4 @@ export default {
         padding: 0 4%;
         grid-template-columns: repeat(3, 1fr);
     }
-}
-</style>
+}</style>
