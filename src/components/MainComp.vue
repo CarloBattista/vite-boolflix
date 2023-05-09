@@ -8,7 +8,7 @@
                 <div class="box_icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <input v-model="this.store.searchBar" @keyup="apiMovies()" class="searchInput" type="text"
+                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows()" class="searchInput" type="text"
                     placeholder="Cerca Film o Serie TV">
             </div>
         </div>
@@ -43,6 +43,13 @@ export default {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.myApiKey}&query=${store.searchBar}`)
                 .then((res) => {
                     this.store.arrayMovies = res.data.results
+                    console.log(res.data)
+                })
+        },
+        apiShows() {
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.myApiKey}&query=${store.searchBar}`)
+                .then((res) => {
+                    this.store.arrayShows = res.data.results
                     console.log(res.data)
                 })
         },
@@ -130,7 +137,7 @@ export default {
 
 .container_cards {
     width: 100%;
-    padding: 0 60px;
+    padding: 30px 60px;
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(6, 1fr);
