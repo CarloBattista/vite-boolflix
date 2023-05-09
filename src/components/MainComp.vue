@@ -126,6 +126,33 @@ export default {
     font-size: 1rem;
 }
 
+.container_cards{
+    width: 100%;
+    padding: 0 60px;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+.imagwWrap {
+    width: 100%;
+    height: 100%;
+}
+
+.imagwWrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 9 / 13;
+}
+
 @media only screen and (max-width: 700px) {
     .header {
         padding: 0 4%;
