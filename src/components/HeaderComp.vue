@@ -5,20 +5,20 @@
                 <div class="logo_icon"></div>
             </a>
             <div class="secondaryNav">
-                <div class="search">
-                    <div class="box_icon">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <input type="text" class="searchInput" placeholder="Cerca Film o Serie TV">
-                </div>
+                <SearchBar />
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import SearchBar from './SearchBar.vue';
+
 export default {
     name: "HeaderComp",
+    components: {
+        SearchBar,
+    },
     data() {
         return {
 
@@ -55,50 +55,6 @@ export default {
     height: 100%;
 }
 
-.search {
-    position: relative;
-    width: 250px;
-    height: 30px;
-}
-
-.searchInput {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #fff;
-    outline: none;
-    background: rgba(0, 0, 0, .7);
-    padding: 0 30px;
-}
-
-.searchInput::placeholder {
-    color: #aaa;
-    font-size: .8rem;
-    font-weight: 400;
-}
-
-.searchInput[type=text] {
-    color: #fff;
-    font-size: .8rem;
-    font-weight: 400;
-}
-
-.box_icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.box_icon .fa-magnifying-glass {
-    color: #fff;
-    font-size: 1rem;
-}
-
 @media only screen and (max-width: 600px) {
     .header {
         height: 42px;
@@ -108,15 +64,6 @@ export default {
     .header a {
         width: 79px;
         height: 21px;
-    }
-
-    .search {
-        width: 180px;
-        height: 25px;
-    }
-
-    .box_icon .fa-magnifying-glass {
-        font-size: .8rem;
     }
 }
 </style>
