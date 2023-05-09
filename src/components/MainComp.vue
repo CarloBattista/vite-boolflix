@@ -17,7 +17,7 @@
                     <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" alt="element.title">
                 </div>
                 <div class="infoWrap">
-                    <h2 class="titleContent">{{ element.name }}</h2>
+                    <h2 class="titleContent">{{ element.title }}</h2>
                     <h2 class="originalTitleContent">{{ element.original_title }}</h2>
                     <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
@@ -152,6 +152,37 @@ export default {
     height: 100%;
     object-fit: cover;
     aspect-ratio: 9 / 13;
+}
+
+.infoWrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .7);
+}
+
+.titleContent{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.originalTitleContent{
+    color: #aaa;
+    font-size: .8rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.synopsisContent{
+    color: #aaa;
+    font-size: .6rem;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 700px) {
