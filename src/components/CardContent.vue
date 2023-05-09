@@ -1,18 +1,12 @@
 <template>
     <div>
-        <h2>Main</h2>
+        <h2>Card</h2>
     </div>
-    <CardContent />
 </template>
 
 <script>
-import CardContent from './CardContent.vue';
-
 export default {
-    name: "MainComp",
-    components: {
-        CardContent,
-    },
+    name: "CardContent",
     data() {
         return {
             

@@ -7,6 +7,12 @@ export default {
   components: {
     HeaderComp,
     MainComp,
+  },
+  data() {
+
+  },
+  methods: {
+    
   }
 }
 </script>
