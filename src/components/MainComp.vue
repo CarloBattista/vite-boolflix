@@ -42,14 +42,14 @@ export default {
     },
     methods: {
         apiMovies() {
-            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.myApiKey}&query=${store.searchBar}`)
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.myApiKey}&query=${store.searchBar}&language=${store.languageApi}`)
                 .then((res) => {
                     this.store.arrayMovies = res.data.results
                     console.log(res.data)
                 })
         },
         apiShows() {
-            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.myApiKey}&query=${store.searchBar}`)
+            axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.myApiKey}&query=${store.searchBar}&language=${store.languageApi}`)
                 .then((res) => {
                     this.store.arrayShows = res.data.results
                     console.log(res.data)
