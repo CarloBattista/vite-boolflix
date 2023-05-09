@@ -8,7 +8,8 @@
                 <div class="box_icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <input v-model="this.store.searchBar" @keyup="apiMovies()" class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
+                <input v-model="this.store.searchBar" @keyup="apiMovies()" class="searchInput" type="text"
+                    placeholder="Cerca Film o Serie TV">
             </div>
         </div>
         <div class="container_cards">
@@ -127,7 +128,7 @@ export default {
     font-size: 1rem;
 }
 
-.container_cards{
+.container_cards {
     width: 100%;
     padding: 0 60px;
     display: grid;
@@ -140,6 +141,7 @@ export default {
     width: 100%;
     height: auto;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .imagwWrap {
@@ -154,32 +156,38 @@ export default {
     aspect-ratio: 9 / 13;
 }
 
-.infoWrap{
+.infoWrap {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     padding: 1em;
-    display: flex;
+    display: none;
     flex-direction: column;
     overflow: hidden;
     background: rgba(0, 0, 0, .7);
 }
 
-.titleContent{
+.card:hover .infoWrap {
+    display: flex;
+}
+
+.titleContent {
     color: #fff;
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 5px;
 }
-.originalTitleContent{
+
+.originalTitleContent {
     color: #aaa;
     font-size: .8rem;
     font-weight: 400;
     margin-bottom: 5px;
 }
-.synopsisContent{
+
+.synopsisContent {
     color: #aaa;
     font-size: .6rem;
     font-weight: 400;
@@ -197,5 +205,9 @@ export default {
     .box_icon .fa-magnifying-glass {
         font-size: .8rem;
     }
-}
-</style>
+
+    .container_cards {
+        padding: 0 4%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}</style>
