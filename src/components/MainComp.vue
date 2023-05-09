@@ -11,6 +11,18 @@
                 <input v-model="this.store.searchBar" class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
             </div>
         </div>
+        <div class="container_cards">
+            <div class="card">
+                <div class="imageWrap">
+                    <img src="" alt="">
+                </div>
+                <div class="infoWrap">
+                    <h2 class="titleContent"></h2>
+                    <h2 class="originalTitleContent"></h2>
+                    <p class="synopsisContent"></p>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
