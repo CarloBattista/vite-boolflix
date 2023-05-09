@@ -8,18 +8,20 @@
                 <div class="box_icon">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
-                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows()" class="searchInput" type="text"
+                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows(), connectAllContent()" class="searchInput" type="text"
                     placeholder="Cerca Film o Serie TV">
             </div>
         </div>
         <div class="container_cards">
-            <div class="card" v-for="(element, index) in store.arrayMovies" :key="index">
+            <div class="card" v-for="(element, index) in store.allContents" :key="index">
                 <div class="imageWrap">
                     <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" alt="element.title">
                 </div>
                 <div class="infoWrap">
                     <h2 class="titleContent">{{ element.title }}</h2>
-                    <h2 class="originalTitleContent">{{ element.original_title }}</h2>
+                    <h2 class="titleContent">{{ element.name }}</h2>
+                    <h3 class="originalTitleContent">{{ element.original_title }}</h3>
+                    <h3 class="originalTitleContent">{{ element.original_name }}</h3>
                     <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
             </div>
@@ -52,6 +54,9 @@ export default {
                     this.store.arrayShows = res.data.results
                     console.log(res.data)
                 })
+        },
+        connectAllContent() {
+            this.store.allContents = this.store.arrayMovies.concat(this.store.arrayShows)
         },
     },
 }
@@ -188,7 +193,7 @@ export default {
 }
 
 .originalTitleContent {
-    color: #aaa;
+    color: #fff;
     font-size: .8rem;
     font-weight: 400;
     margin-bottom: 5px;
