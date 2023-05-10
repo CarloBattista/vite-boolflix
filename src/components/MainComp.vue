@@ -1,5 +1,5 @@
 <template>
-    <HeaderComp />
+    <HeaderComp @callApi="apiMovies(), apiShows(), connectAllContent()"/>
     <div class="mainView">
         <div class="container_cards">
             <div class="card" v-for="(element, index) in store.allContents" :key="index">
@@ -21,7 +21,6 @@
                         <img v-else="element.original_language == 'sp' " class="flag_lang"
                             src="/_resources/flags/sp_flag.svg" alt="flag_sp">
                     </div>
-                    <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
             </div>
         </div>
