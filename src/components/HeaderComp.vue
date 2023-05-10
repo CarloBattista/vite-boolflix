@@ -7,8 +7,13 @@
             <div class="box_icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <input v-model="this.store.searchBar" @keyup="$emit('callApi')" class="searchInput"
-                type="text" placeholder="Cerca Film o Serie TV">
+            <input v-model="this.store.searchBar" @keyup="$emit('callApi')" @input="showDiv" class="searchInput" type="text"
+                placeholder="Cerca Film o Serie TV">
+        </div>
+    </div>
+    <div v-if="showSubHeader" class="subHeader">
+        <div class="region_left">
+            <h2 class="title">Hai cercato: <span class="searchResult">{{ this.store.searchBar }}</span></h2>
         </div>
     </div>
 </template>
@@ -20,9 +25,19 @@ export default {
     name: "HeaderComp",
     data() {
         return {
-            store
+            store,
+            showSubHeader: false,
         }
     },
+    methods: {
+        showDiv() {
+            if (this.store.searchBar.length > 0) {
+                this.showSubHeader = true;
+            } else {
+                this.showSubHeader = false;
+            }
+        },
+    }
 }
 </script>
 
@@ -98,8 +113,31 @@ export default {
     font-size: 1rem;
 }
 
+.subHeader {
+    width: 100%;
+    height: 68px;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.searchResult {
+    color: #fff;
+    font-weight: 700;
+}
+
 @media only screen and (max-width: 700px) {
-    .header {
+
+    .header,
+    .subHeader {
         padding: 0 4%;
     }
 
