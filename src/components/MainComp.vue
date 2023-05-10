@@ -1,21 +1,10 @@
 <template>
+    <HeaderComp />
     <div class="mainView">
-        <div class="header">
-            <a href="/">
-                <div class="logo_icon"></div>
-            </a>
-            <div class="container_search">
-                <div class="box_icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows(), connectAllContent()"
-                    class="searchInput" type="text" placeholder="Cerca Film o Serie TV">
-            </div>
-        </div>
         <div class="container_cards">
             <div class="card" v-for="(element, index) in store.allContents" :key="index">
                 <div class="imageWrap">
-                    <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" alt="element.title">
+                    <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" :alt="element.title">
                 </div>
                 <div class="infoWrap">
                     <h2 class="titleContent">{{ element.title }}</h2>
@@ -24,13 +13,13 @@
                     <h3 class="originalTitleContent">{{ element.original_name }}</h3>
                     <div class="container_language_container">
                         <img v-if="element.original_language == 'it'" class="flag_lang" src="/_resources/flags/it_flag.svg"
-                            alt="">
+                            alt="flag_it">
                         <img v-else-if="element.original_language == 'en'" class="flag_lang"
-                            src="/_resources/flags/en_flag.svg" alt="">
+                            src="/_resources/flags/en_flag.svg" alt="flag_en">
                         <img v-else-if="element.original_language == 'fr'" class="flag_lang"
-                            src="/_resources/flags/fr_flag.svg" alt="">
+                            src="/_resources/flags/fr_flag.svg" alt="flag_fr">
                         <img v-else="element.original_language == 'sp' " class="flag_lang"
-                            src="/_resources/flags/sp_flag.svg" alt="">
+                            src="/_resources/flags/sp_flag.svg" alt="flag_sp">
                     </div>
                     <p class="synopsisContent">{{ element.overview }}</p>
                 </div>
@@ -43,8 +32,13 @@
 import axios from "axios";
 import { store } from "../store"
 
+import HeaderComp from "./HeaderComp.vue";
+
 export default {
     name: "MainComp",
+    components: {
+        HeaderComp
+    },
     data() {
         return {
             store
@@ -79,80 +73,9 @@ export default {
     width: 100%;
 }
 
-.header {
-    position: sticky;
-    z-index: 999;
-    width: 100%;
-    height: 68px;
-    padding: 0 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-}
-
-.header a {
-    width: 92px;
-    height: 25px;
-}
-
-.logo_icon {
-    background-image: url(/_resources/netflix_logo.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    width: 100%;
-    height: 100%;
-}
-
-.container_search {
-    position: relative;
-    width: 250px;
-    height: 30px;
-}
-
-.searchInput {
-    width: 100%;
-    height: 100%;
-    padding: 0 35px;
-    outline: none;
-    border: 1px solid rgba(255, 255, 255, .7);
-    background: rgba(0, 0, 0, .7);
-}
-
-.searchInput::placeholder {
-    color: #aaa;
-    font-size: .8rem;
-    font-weight: 400;
-}
-
-.searchInput[type=text] {
-    color: #fff;
-    font-size: .8rem;
-    font-weight: 400;
-}
-
-.box_icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 35px;
-    height: 100%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.box_icon .fa-magnifying-glass {
-    color: #fff;
-    font-size: 1rem;
-}
-
 .container_cards {
     width: 100%;
-    padding: 30px 60px;
+    padding: 3vw 60px;
     display: grid;
     gap: 1em;
     grid-template-columns: repeat(6, 1fr);
@@ -237,20 +160,9 @@ export default {
 }
 
 @media only screen and (max-width: 700px) {
-    .header {
-        padding: 0 4%;
-    }
-
-    .container_search {
-        width: 200px;
-    }
-
-    .box_icon .fa-magnifying-glass {
-        font-size: .8rem;
-    }
-
     .container_cards {
-        padding: 0 4%;
+        padding: 3vw 4%;
         grid-template-columns: repeat(3, 1fr);
     }
-}</style>
+}
+</style>
