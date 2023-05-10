@@ -8,8 +8,8 @@
                 </div>
                 <div class="infoWrap">
                     <h2 class="titleContent">{{ element.title }}</h2>
+                    <h3 class="originalTitleContent" v-if="element.original_title !== element.title">{{ element.original_title }}</h3>
                     <h2 class="titleContent">{{ element.name }}</h2>
-                    <h3 class="originalTitleContent">{{ element.original_title }}</h3>
                     <h3 class="originalTitleContent">{{ element.original_name }}</h3>
                     <div class="container_language_container">
                         <img v-if="element.original_language == 'it'" class="flag_lang" src="/_resources/flags/it_flag.svg"
@@ -20,6 +20,50 @@
                             src="/_resources/flags/fr_flag.svg" alt="flag_fr">
                         <img v-else="element.original_language == 'sp' " class="flag_lang"
                             src="/_resources/flags/sp_flag.svg" alt="flag_sp">
+                    </div>
+                    <div class="vote_rating_container">
+                        <div v-if="parseInt(element.vote_average / 2) == 5">
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                        </div>
+                        <div v-else-if="parseInt(element.vote_average / 2) == 4">
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                        </div>
+                        <div v-else-if="parseInt(element.vote_average / 2) == 3">
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                        </div>
+                        <div v-else-if="parseInt(element.vote_average / 2) == 2">
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                        </div>
+                        <div v-else-if="parseInt(element.vote_average / 2) == 1">
+                            <img src="/_resources/icons/star-solid.svg" alt="star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                        </div>
+                        <div v-else-if="parseInt(element.vote_average / 2) == 0">
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                            <img src="/_resources/icons/star-regular.svg" alt="half star" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,7 +190,8 @@ export default {
     font-weight: 400;
 }
 
-.container_language_container {
+.container_language_container,
+.vote_rating_container {
     width: 100%;
     margin-bottom: 5px;
     display: flex;
@@ -158,10 +203,23 @@ export default {
     height: auto;
 }
 
+.vote_rating_container div {
+    width: 18px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
 @media only screen and (max-width: 700px) {
     .container_cards {
         padding: 3vw 4%;
         grid-template-columns: repeat(3, 1fr);
+    }
+    .titleContent{
+        font-size: .8rem;
+    }
+    .originalTitleContent{
+        font-size: .6rem;
     }
 }
 </style>
