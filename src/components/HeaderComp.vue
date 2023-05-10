@@ -7,7 +7,7 @@
             <div class="box_icon">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <input v-model="this.store.searchBar" @keyup="apiMovies(), apiShows(), connectAllContent()" class="searchInput"
+            <input v-model="this.store.searchBar" @keyup="$emit('callApi')" class="searchInput"
                 type="text" placeholder="Cerca Film o Serie TV">
         </div>
     </div>
