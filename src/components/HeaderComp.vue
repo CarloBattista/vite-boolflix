@@ -1,4 +1,5 @@
 <template>
+    <!-- Header -->
     <div class="header">
         <a href="/">
             <div class="logo_icon"></div>
@@ -11,6 +12,7 @@
                 placeholder="Cerca Film o Serie TV">
         </div>
     </div>
+    <!-- SubHeader -->
     <div v-if="showSubHeader" class="subHeader">
         <div class="region_left">
             <h2 class="title">Hai cercato: <span class="searchResult">{{ this.store.searchBar }}</span></h2>
@@ -30,6 +32,7 @@ export default {
         }
     },
     methods: {
+        // Quando nell input si inizia a scrivere qualcosa appare il subHeader
         showDiv() {
             if (this.store.searchBar.length > 0) {
                 this.showSubHeader = true;
@@ -42,6 +45,7 @@ export default {
 </script>
 
 <style scoped>
+/* Header */
 .header {
     position: sticky;
     z-index: 999;
@@ -69,6 +73,7 @@ export default {
     height: 100%;
 }
 
+/* Search */
 .container_search {
     position: relative;
     width: 250px;
@@ -113,6 +118,7 @@ export default {
     font-size: 1rem;
 }
 
+/* SubHeader */
 .subHeader {
     width: 100%;
     height: 68px;

@@ -1,7 +1,11 @@
 <template>
+    <!-- Comp Header -->
     <HeaderComp @callApi="apiMovies(), apiShows(), connectAllContent()"/>
+    <!-- Main -->
     <div class="mainView">
+        <!-- Container Cards -->
         <div class="container_cards">
+            <!-- Card ciclate -->
             <div class="card" v-for="(element, index) in store.allContents" :key="index">
                 <div class="imageWrap">
                     <img :src="`https://image.tmdb.org/t/p/w342/${element.poster_path}`" :alt="element.title">
@@ -92,14 +96,14 @@ export default {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${store.myApiKey}&query=${store.searchBar}&language=${store.languageApi}`)
                 .then((res) => {
                     this.store.arrayMovies = res.data.results
-                    console.log(res.data)
+                    // console.log(res.data)
                 })
         },
         apiShows() {
             axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${store.myApiKey}&query=${store.searchBar}&language=${store.languageApi}`)
                 .then((res) => {
                     this.store.arrayShows = res.data.results
-                    console.log(res.data)
+                    // console.log(res.data)
                 })
         },
         connectAllContent() {
@@ -110,12 +114,14 @@ export default {
 </script>
 
 <style scoped>
+/* Main */
 .mainView {
     position: relative;
     z-index: 1;
     width: 100%;
 }
 
+/* Container Cards */
 .container_cards {
     width: 100%;
     padding: 3vw 60px;
@@ -124,6 +130,7 @@ export default {
     grid-template-columns: repeat(6, 1fr);
 }
 
+/* Card */
 .card {
     position: relative;
     width: 100%;
